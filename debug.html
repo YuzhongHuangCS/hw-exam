@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Debug</title>
+	<style>
+		body{
+			font-family: sans-serif;
+		}
+		textarea{
+			width: 50rem;
+			height: 10rem;
+		}
+	</style>
+</head>
+<body ng-app ng-controller="testControl">
+	<p>输入要提交的JSON数据</p>
+	<textarea ng-model="postData"></textarea>
+	<br/>
+	<button ng-click="submit()">提交</button>
+	<p>返回结果</p>
+	<div>{{result}}</div>
+
+<script src="/bower_components/angular/angular.min.js"></script>
+<script>
+function testControl($scope, $http) {
+	$scope.postData = '{"userID": 1,"examID": 1, "answers": [{"question": "1", "answer": "回答1"}, {"question": "2", "answer": "回答2"}, {"question": "3", "answer": "回答3"}]}';
+
+	$scope.submit = function submit(){
+		var config = {
+			method: 'POST',
+			url: 'submit.php',
+			data: $scope.postData,
+		}
+
+		$http(config).success(function(data) {
+			$scope.result = data;
+		});
+	};
+}
+</script>
+</body>
+</html>

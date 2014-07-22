@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <title>Cookie</title> 
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+		<div class="container form-group">
+            <br/>
+			<input type="text" class="form-control" id="userID" placeholder="userID">
+            <br/>
+            <input type="text" class="form-control" id="examID" placeholder="examID">
+            <br/>
+            <button class="btn btn-primary">设置Cookie</button>
+        </div>
+
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/bower_components/jquery.cookie/jquery.cookie.js"></script>
+<script>
+
+$(function() {
+    $('button').click(function(event) {
+        $.cookie('userID', $('#userID').val());
+        $.cookie('examID', $('#examID').val());
+        alert('Cookie设置成功');
+    });
+})
+    
+</script>
+</body>
+</html>
